@@ -4,8 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.ByteArrayInputStream;
+import java.util.Arrays;
 
 import com.nerox.client.keepalives.UDPKeepAlive;
+import com.nerox.client.security.Cryptography;
 import org.junit.Test;
 
 /**
@@ -53,20 +56,34 @@ public class AppTest
         return sb.toString();
     }
     @Test
+    public void runAllTests(){
+      this.tfprotocolDoesConnect();
+      this.loginCommand();
+      //this.setfsidCommand();
+      //this.setfspermCommand();
+      this.supCommand();
+
+    }
+    
     public void tfprotocolDoesConnect()
     {
         assertTrue(this.tfprotocol.isConnect());
     }
-    @Test
+ 
     public void loginCommand(){
-        this.tfprotocol.loginCommand("defusr", "pwd");
+        this.tfprotocol.loginCommand("user_your_system_user_here", "pwd");
     }
-    @Test
+   
     public void setfsidCommand(){
         this.tfprotocol.setfsidCommand("new identity");
     }
-    @Test
+    
     public void setfspermCommand(){
         this.tfprotocol.setfspermCommand("identity", "path", "/");
+    }
+
+    public void supCommand(){
+      ByteArrayInputStream stream = new ByteArrayInputStream(Cryptography.getRandomBytes(99));
+      this.tfprotocol.supCommand("test", stream, 0);
     }
 }

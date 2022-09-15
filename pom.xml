@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.nerox.client</groupId>
-  <artifactId>clients</artifactId>
+  <artifactId>tfprotocol</artifactId>
   <version>2.4.1</version>
 
-  <name>clients</name>
+  <name>tfprotocol</name>
   <url>https://www.godjango.dev</url>
 
   <properties>
