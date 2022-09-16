@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.ByteArrayInputStream;
-import java.util.Arrays;
 
 import com.nerox.client.keepalives.UDPKeepAlive;
 import com.nerox.client.security.Cryptography;
@@ -24,8 +23,14 @@ public class AppTest
         String path = System.getProperty("basedir");
         try{
             FileInputStream fis = new FileInputStream(this.joinPaths(path, "src/test/files/PublicKey.pem"));
-            this.tfprotocol = new Tfprotocol("localhost", 10345, fis, 
-            "testhash", 36, "0.0", callback);
+            this.tfprotocol = new Tfprotocol(
+                "localhost", 
+                10345, 
+                fis, 
+                "testhash", 
+                36, 
+                "0.0", 
+                callback);
         }catch(FileNotFoundException ignored){
             assertTrue("File not found", false);
         }
@@ -37,6 +42,7 @@ public class AppTest
     private String normalizePath(String path){
         return this.normalizePath(path, "/");
     }
+
     private String normalizePath(String path, String usingSeparator){
         String sep = System.getProperty("file.separator");
         return path.replace(usingSeparator, sep);
@@ -57,12 +63,12 @@ public class AppTest
     }
     @Test
     public void runAllTests(){
-      this.tfprotocolDoesConnect();
-      this.loginCommand();
-      //this.setfsidCommand();
-      //this.setfspermCommand();
-      this.supCommand();
-
+        this.tfprotocolDoesConnect();
+        //this.loginCommand();
+        //this.setfsidCommand();
+        //this.setfspermCommand();
+        this.supCommand();
+        this.statCommand();
     }
     
     public void tfprotocolDoesConnect()
@@ -83,7 +89,15 @@ public class AppTest
     }
 
     public void supCommand(){
-      ByteArrayInputStream stream = new ByteArrayInputStream(Cryptography.getRandomBytes(99));
-      this.tfprotocol.supCommand("test", stream, 0);
+        ByteArrayInputStream stream = new ByteArrayInputStream(Cryptography.getRandomBytes(99));
+        assertTrue(
+            this.tfprotocol.supCommand(
+                "operadores/34f5e8394fced10a0df515647ed582b93b5aa7cb743ce93ec7a287b15aa63014.sd/34f5e8394fced10a0df515647ed582b93b5aa7cb743ce93ec7a287b15aa63014.json", 
+                stream, 
+                0)
+        );
+    }
+    public void statCommand(){
+        this.tfprotocol.fstatCommand("operadores/34f5e8394fced10a0df515647ed582b93b5aa7cb743ce93ec7a287b15aa63014.sd/34f5e8394fced10a0df515647ed582b93b5aa7cb743ce93ec7a287b15aa63014.json");
     }
 }

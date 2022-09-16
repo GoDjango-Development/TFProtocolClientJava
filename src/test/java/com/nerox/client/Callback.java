@@ -102,6 +102,7 @@ public class Callback implements ITfprotocolCallback{
 
     @Override
     public void supCallback(StatusInfo sup) {
+        System.out.println("Sup Callback");
         this.statusServer(sup);
     }
 
