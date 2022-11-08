@@ -45,7 +45,6 @@ public class Callback implements ITfprotocolCallback{
     }
     @Override
     public void injailCallback(StatusInfo injail) {
-        // TODO Auto-generated method stub
         this.statusServer(injail);
     }
 

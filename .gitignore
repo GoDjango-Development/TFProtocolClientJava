@@ -1,2 +1,4 @@
 target/
-src/test/files
+.gitsecret/keys/random_seed
+!*.secret
+src/test/files/PublicKey.pem
