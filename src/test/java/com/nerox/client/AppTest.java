@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.ByteArrayInputStream;
 
 import com.nerox.client.keepalives.UDPKeepAlive;
+import com.nerox.client.misc.TCPTimeouts;
 import com.nerox.client.security.Cryptography;
 import org.junit.Test;
 
@@ -62,21 +63,37 @@ public class AppTest
         return sb.toString();
     }
     
-    //@Test
+    @Test
     public void runAllTests(){
         this.tfprotocolDoesConnect();
+        this.testConnectionWithTimeout();
         //this.loginCommand();
         //this.setfsidCommand();
         //this.setfspermCommand();
-        this.supCommand();
-        this.statCommand();
+        //this.supCommand();
+        //this.statCommand();
     }
     
     public void tfprotocolDoesConnect()
     {
         assertTrue(this.tfprotocol.isConnect());
     }
- 
+    
+    public void testConnectionWithTimeout() {
+        TCPTimeouts tcptimeouts = TCPTimeouts.getInstance(this.callback);
+        tcptimeouts.setConnectTimeout(5);
+        tcptimeouts.setDnsResolutionTimeout(5);
+        Tfprotocol protocol = new Tfprotocol(this.tfprotocol, callback);
+        try{
+            // protocol.connect();
+            protocol.easyreum.getSocket().setSoTimeout(10*1000);
+            protocol.echoCommand("hola mundo");
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        assertTrue("Tested tcp socket timeout", protocol.isConnect());
+    }
+
     public void loginCommand(){
         this.tfprotocol.loginCommand("user_your_system_user_here", "pwd");
     }

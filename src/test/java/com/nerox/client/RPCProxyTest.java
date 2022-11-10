@@ -62,7 +62,7 @@ public class RPCProxyTest {
         return sb.toString();
     }
     
-    @Test
+    //@Test
     public void runAllTests(){
         this.proxyDoesConnect();
         this.testMainProtocol();
