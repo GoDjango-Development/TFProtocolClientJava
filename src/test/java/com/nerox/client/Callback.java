@@ -1,7 +1,9 @@
 package com.nerox.client;
 import com.nerox.client.callbacks.ITfprotocolCallback;
+import com.nerox.client.callbacks.IXSRPCProxyCallback;;
 import com.nerox.client.misc.StatusInfo;
 import com.nerox.client.misc.StatusServer;
+import com.nerox.client.modules.XSRPCProxy;
 import com.nerox.client.misc.FileStat;
 
 public class Callback implements ITfprotocolCallback{
@@ -179,5 +181,38 @@ public class Callback implements ITfprotocolCallback{
     @Override
     public void issecfsCallback(StatusInfo statusInfo){
         this.statusServer(statusInfo);
+    }
+}
+
+class RPCProxyCallback implements IXSRPCProxyCallback{
+    @Override
+    public void statusServer(StatusInfo status) {
+        System.out.println("------------------------------");
+        System.out.println(status.getStatus());
+        System.out.println(status.getMessage());
+        System.out.println(status.getPayload()!=null ?new String(status.getPayload()):"");
+        System.out.println(status.getCode());
+        System.out.println("------------------------------");
+    }
+    @Override
+    public void responseServerCallback(StatusInfo status) {
+        // TODO Auto-generated method stub   
+        this.statusServer(status);
+    }
+
+    @Override
+    public void instanceTfProtocol(XSRPCProxy instance) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void startRPCProxyCallback(StatusInfo si) {
+        // TODO Auto-generated method stub 
+        this.statusServer(si);
+    }
+    @Override
+    public void receivePayload(StatusInfo si) {
+        // TODO Auto-generated method stub
+        this.statusServer(si);
     }
 }

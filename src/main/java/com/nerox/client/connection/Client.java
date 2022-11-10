@@ -138,7 +138,7 @@ public class Client {
 
     @Override
     protected void finalize() throws Throwable {
-        super.finalize();
+        super.finalize(); // TODO This needs further research
         this.stopConnection();
     }
 }

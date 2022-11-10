@@ -138,7 +138,7 @@ public final class Tfprotocol extends TfprotocolSuper<ITfprotocolCallback> {
      * */
     public void echoCommand(String value) {
         this.getProtoHandler().echoCallback(
-                this.easyreum.getBuilder().build("ECHO",value).translate()
+                this.easyreum.getBuilder().build("ECHO", value).translate()
                         .getBuilder().buildStatusInfo().getMessage());
     }
     /**

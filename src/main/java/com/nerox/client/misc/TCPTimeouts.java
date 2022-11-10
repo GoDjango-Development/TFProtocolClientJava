@@ -2,7 +2,7 @@ package com.nerox.client.misc;
 
 import com.nerox.client.callbacks.ISuperCallback;
 
-public class TCPTimeouts {
+public class TCPTimeouts { // TODO This class needs to be reviewed as seems like is not usefull at all
 
     private int connectTimeout = 120 * 1000; //2 minutos de espera
     private int connectRetry = 3; //Intentos de reconexión
