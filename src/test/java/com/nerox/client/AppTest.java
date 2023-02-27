@@ -19,14 +19,13 @@ public class AppTest
     Callback callback;
     Tfprotocol tfprotocol;
     public AppTest(){
-        this.callback = new Callback();
-            // Get current path
+        this.callback = new Callback(); // Get current path
         String path = System.getProperty("basedir");
         try{
             FileInputStream fis = new FileInputStream(this.joinPaths(path, "src/test/files/PublicKey.pem"));
             this.tfprotocol = new Tfprotocol(
                 "localhost", 
-                10345, 
+                10346, 
                 fis, 
                 "testhash", 
                 36, 

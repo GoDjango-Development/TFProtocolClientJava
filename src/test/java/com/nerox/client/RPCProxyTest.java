@@ -25,7 +25,7 @@ public class RPCProxyTest {
             FileInputStream fis = new FileInputStream(this.joinPaths(path, "src/test/files/PublicKey.pem"));
             this.proxy = new XSRPCProxy(
                 "localhost", 
-                10345,
+                10346,
                 fis,
                 "testhash", 
                 36, 
