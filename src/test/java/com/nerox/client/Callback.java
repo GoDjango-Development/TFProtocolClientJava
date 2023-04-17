@@ -1,6 +1,6 @@
 package com.nerox.client;
 import com.nerox.client.callbacks.ITfprotocolCallback;
-import com.nerox.client.callbacks.IXSRPCProxyCallback;;
+import com.nerox.client.callbacks.IXSRPCProxyCallback;
 import com.nerox.client.misc.StatusInfo;
 import com.nerox.client.misc.StatusServer;
 import com.nerox.client.modules.XSRPCProxy;

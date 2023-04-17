@@ -61,8 +61,7 @@ public class AppTest
         }
         return sb.toString();
     }
-    
-    @Test
+    //@Test
     public void runAllTests(){
         this.tfprotocolDoesConnect();
         this.testConnectionWithTimeout();

@@ -1110,6 +1110,7 @@ public final class Tfprotocol extends TfprotocolSuper<ITfprotocolCallback> {
             if (temp != 0)
                 this.easyreum.getSocket().setSoTimeout(temp);
         }catch (SocketException ignored){}
+        this.getProtoHandler().sdownCallback(this.easyreum.getBuilder().buildStatusInfo()); 
         return this.easyreum.getHeader() == 0 && !hasError;
     }
     public boolean supCommand(String path, InputStream stream, int timeout) throws TFExceptions{
@@ -1147,6 +1148,7 @@ public final class Tfprotocol extends TfprotocolSuper<ITfprotocolCallback> {
                     this.easyreum.getSocket().setSoTimeout(temp);
             }catch (SocketException ignored){}
         }
+        this.getProtoHandler().supCallback(this.easyreum.getBuilder().buildStatusInfo()); 
         return this.easyreum.getHeader() == 0;
     }
     public void fsizeCommand(String path){
