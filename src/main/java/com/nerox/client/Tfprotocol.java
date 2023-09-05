@@ -1175,6 +1175,65 @@ public final class Tfprotocol extends TfprotocolSuper<ITfprotocolCallback> {
         this.getProtoHandler().lsrv2Callback(this.easyreum.getBuilder().build("LSRV2", pathToList + "@||@" + pathToFileToStore).translate()
                 .getBuilder().buildStatusInfo());
     }
+    /**
+     * LSV2DOWN lists the directory indicated by the first parameter, it send 
+     * the list to the client directly. One file per line. If a line ends with 
+     * slash ‘/’ it means is a directory, otherwise it could be any other file.
+     * @param pathToList Path to be listed.
+     * @return OK
+     * @return FAILED 20 : Source path is not a directory.
+     * @return FAILED 1 : Access denied to location.
+     * @return FAILED 30 : Directory is locked.
+     * @return FAILED 53 : Failed running LSRV2.
+     */
+    public void lsv2DownCommand(String pathToList) {
+        this.getProtoHandler().lsv2DownCallback(
+            this.easyreum.getBuilder().build("LSV2DOWN", pathToList).translate().getBuilder().buildStatusInfo());
+
+        if(this.easyreum.getBuilder().isStatusInfoOk()){
+            try {
+                this.easyreum.receiveUntil(this.getClass().getMethod("DownReadHeader", int.class),
+                        this, this.getProtoHandler(), "lsv2DownCallback");
+                this.getProtoHandler().lsv2DownCallback(
+                    this.easyreum.getHeader()==-10 ? new StatusInfo(StatusServer.OK, this.easyreum.getHeader(), "Successfull transmition")
+                                                    : new StatusInfo(StatusServer.FAILED, this.easyreum.getHeader(), "Failed transmition"));
+            } catch (NoSuchMethodException e) {
+                throw new TFExceptions(e);
+            }
+        }
+    }
+
+    public boolean DownReadHeader( int header){
+        return (header ==-10 || header ==-11);
+    }
+   /**
+     * LSRV2DOWN lists the directory indicated by the first parameter using recursion,
+     * it send the list to the client directly. One file per line. If a line ends with 
+     * slash ‘/’ it means is a directory, otherwise it could be any other file.
+     * @param pathToList Path to be listed.
+     * @return OK
+     * @return FAILED 20 : Source path is not a directory.
+     * @return FAILED 1 : Access denied to location.
+     * @return FAILED 30 : Directory is locked.
+     * @return FAILED 53 : Failed running LSRV2.
+     */
+    public void lsrv2DownCommand(String pathToList) {
+        this.getProtoHandler().lsrv2DownCallback(
+            this.easyreum.getBuilder().build("LSRV2DOWN", pathToList).translate().getBuilder().buildStatusInfo());
+        
+        if(this.easyreum.getBuilder().isStatusInfoOk()){
+            try {
+                this.easyreum.receiveUntil(this.getClass().getMethod("DownReadHeader", int.class),
+                    this, this.getProtoHandler(), "lsrv2DownCallback");
+                this.getProtoHandler().lsrv2DownCallback(
+                         this.easyreum.getHeader()==-10 ? new StatusInfo(StatusServer.OK, this.easyreum.getHeader(), "Successfull transmition")
+                                                        : new StatusInfo(StatusServer.FAILED, this.easyreum.getHeader(), "Failed transmition")
+                );
+            } catch (NoSuchMethodException e) {
+                     throw new TFExceptions(e);
+            }
+        }
+    }
     public void ftypeCommand(String pathToFile){
         this.easyreum.getBuilder().build("FTYPE", pathToFile).send();
         byte type = this.easyreum.receiveBuffer(1)[0];

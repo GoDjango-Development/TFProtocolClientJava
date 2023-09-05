@@ -117,6 +117,16 @@ public class Callback implements ITfprotocolCallback{
         this.statusServer(tlb);
     }
 
+    
+    @Override
+    public void lsv2DownCallback(StatusInfo path){
+        this.statusServer(path);
+    }
+    @Override
+    public void lsrv2DownCallback(StatusInfo path){
+        this.statusServer(path);
+    }
+    
     @Override
     public void fsizeCallback(StatusInfo fsize) {
         this.statusServer(fsize);
