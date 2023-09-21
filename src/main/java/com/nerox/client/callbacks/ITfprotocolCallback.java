@@ -202,6 +202,13 @@ public interface ITfprotocolCallback extends ISuperCallback<Tfprotocol>{
         throw new RuntimeException("Callback is not implemented: exception");
     }
 
+    default void lsv2DownCallback(StatusInfo buildStatusInfo){
+        throw new RuntimeException("Callback is not implemented: exception");
+    }
+
+    default void lsrv2DownCallback(StatusInfo buildStatusInfo){
+        throw new RuntimeException("Callback is not implemented: exception");
+    }
     default void fstypeCallback(TfprotocolConsts.FSTYPE value){
         throw new RuntimeException("Callback is not implemented: exception");
     }
