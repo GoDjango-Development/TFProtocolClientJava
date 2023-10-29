@@ -1,6 +1,3 @@
 target/
 .gitsecret/keys/random_seed
 !*.secret
-.classpath
-.project
-.settings

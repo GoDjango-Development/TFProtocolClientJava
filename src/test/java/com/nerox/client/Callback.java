@@ -9,6 +9,10 @@ import com.nerox.client.misc.FileStat;
 public class Callback implements ITfprotocolCallback{
     Tfprotocol tfprotocol;
     @Override
+    public void rmkdirCallback(StatusInfo status) {
+        this.statusServer(status);
+    }
+    @Override
     public void statusServer(StatusInfo status) {
         System.out.println("------------------------------");
         System.out.println(status.getStatus());

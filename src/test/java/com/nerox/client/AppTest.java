@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.ByteArrayInputStream;
 
 import com.nerox.client.keepalives.UDPKeepAlive;
+import com.nerox.client.misc.StatusServer;
 import com.nerox.client.misc.TCPTimeouts;
 import com.nerox.client.security.Cryptography;
 import org.junit.Test;
@@ -65,6 +66,7 @@ public class AppTest
     public void runAllTests(){
         this.tfprotocolDoesConnect();
         this.testConnectionWithTimeout();
+        this.testsRmkdir();
         //this.loginCommand();
         //this.setfsidCommand();
         //this.setfspermCommand();
@@ -76,7 +78,11 @@ public class AppTest
     {
         assertTrue(this.tfprotocol.isConnect());
     }
-    
+    public void testsRmkdir(){
+    	this.tfprotocol.rmkdirCommand(this.normalizePath("/rene/java/etc"));
+        assertTrue("Server status OK after RMKDIR command execution "
+        		,this.tfprotocol.easyreum.getBuilder().getStatusInfo().getStatus()==StatusServer.OK);
+    }
     public void testConnectionWithTimeout() {
         TCPTimeouts tcptimeouts = TCPTimeouts.getInstance(this.callback);
         tcptimeouts.setConnectTimeout(5);
