@@ -159,6 +159,19 @@ public final class Tfprotocol extends TfprotocolSuper<ITfprotocolCallback> {
                 this.easyreum.getBuilder().build("MKDIR",path).translate()
                         .getBuilder().buildStatusInfo());
     }
+
+
+    /**
+     * RMKDIR “path/to/new/dir”
+     * RMKDIR command creates a directory recursively at the specified
+     * @param path The path to the directory that is going to be created
+     */
+    public void rmkdirCommand(String path) {
+        this.getProtoHandler().rmkdirCallback(
+                this.easyreum.getBuilder().build("RMKDIR",path).translate()
+                        .getBuilder().buildStatusInfo());
+    }
+
     /**
      * Command deletes the specified file. This is a special command because is the only one who can operate in a locked
      * directory. If it is the case, then DEL can only delete exactly one file: The locking file.

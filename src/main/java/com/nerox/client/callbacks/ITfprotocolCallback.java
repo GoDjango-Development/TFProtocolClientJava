@@ -18,6 +18,10 @@ public interface ITfprotocolCallback extends ISuperCallback<Tfprotocol>{
         throw new RuntimeException("Callback is not implemented: exception");
     }
 
+    default void rmkdirCallback(StatusInfo status){
+        throw new RuntimeException("Callback is not implemented: exception");
+    }
+
     default void delCallback(StatusInfo status){
         throw new RuntimeException("Callback is not implemented: exception");
     }
