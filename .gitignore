@@ -1,3 +1,10 @@
-target/
+/out/
+/docs/pdf/
+**/.DS_Store
+/target/
+/bin/
+/jar/
 .gitsecret/keys/random_seed
 !*.secret
+.gitsecret/keys/random_seed
+tests/files/PublicKey.pem

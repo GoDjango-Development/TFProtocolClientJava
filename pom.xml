@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.nerox.client</groupId>
+  <groupId>dev.godjango.tfprotocol</groupId>
   <artifactId>tfprotocol</artifactId>
   <version>2.4.1</version>
 
@@ -27,6 +27,8 @@
   </dependencies>
 
   <build>
+    <sourceDirectory>tfprotocol/v2.4.1/src/main/java</sourceDirectory>
+    <testSourceDirectory>tests/</testSourceDirectory>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
