@@ -4,12 +4,12 @@ TFProtocol (Transfer Protocol) Client Side :bird:
 
 Bitcoin Wallet: 129ziaFyteW1rGzTcjcPD644fn4RC9ayh9
 
-.. image:: https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg
-    :target: https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md
-    :alt: We stand with Ukraine
-
 .. image:: https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg
     :target: https://vshymanskyy.github.io/StandWithUkraine/
+    :alt: We stand with Ukraine
+
+.. image:: https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg
+    :target: https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md
     :alt: We stand with Ukraine
 
 .. image:: https://github.com/GoDjango-Development/TFProtocol/actions/workflows/test_and_build.yml/badge.svg
