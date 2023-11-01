@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-args=("$@")
-command="java -jar /var/lib/tfprotocol/cli.jar ${args[*]}"
-
-$command
