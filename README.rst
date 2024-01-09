@@ -12,10 +12,6 @@ Bitcoin Wallet: 129ziaFyteW1rGzTcjcPD644fn4RC9ayh9
     :target: https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md
     :alt: We stand with Ukraine
 
-.. image:: https://github.com/GoDjango-Development/TFProtocol/actions/workflows/test_and_build.yml/badge.svg
-    :target: https://github.com/GoDjango-Development/TFProtocol/actions/workflows/test_and_build.yml
-    :alt: Build Status
-
 .. image:: https://img.shields.io/badge/Maintained%3F-yes-green.svg
     :target: https://github.com/GoDjango-Development/TFProtocol/graphs/commit-activity
     :alt: Maintained
